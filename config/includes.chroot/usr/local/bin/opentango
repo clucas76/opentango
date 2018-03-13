@@ -1,0 +1,22 @@
+#!/bin/bash
+
+function init_stuff()
+{
+        o_device=`/usr/bin/get_root_dev`
+        ### /usr/bin/init_tango ${o_device}
+        /etc/init.d/wicd stop
+	killall -KILL dhclient
+        ip link set eth0 up
+        chown -R www-data.www-data /var/www/
+        rm -f /var/www/index.html
+
+        # Pour pure-ftpd
+        echo "ftp:x:1000:1000:,,,:/media/OPENTANGO:/bin/false" >> /etc/passwd
+
+}
+
+echo "Starting tangod daemon ..." 
+init_stuff
+/usr/bin/php /usr/local/tangod/tangod.php
+
+exit 0

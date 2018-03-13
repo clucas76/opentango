@@ -1,0 +1,35 @@
+#
+# tangod daemon launcher -- Copyright 2014 - 2015
+#
+#	Christophe Lucas <christophe@clucas.fr>
+#	Ludovic Leroy <>
+# 
+
+#!/bin/bash
+function usage()
+{
+	echo "$0: start|stop"
+}
+
+case "$1" in
+	start)
+		echo "Starting tangod daemon ..." 
+		php /usr/local/tangod/tangod.php
+	;;
+	stop)
+		echo "Stopping tangod daemon ... "
+		kill -9 `cat /var/run/tangod.pid`
+		rm -f /var/run/tangod.pid
+	;;
+	restart)
+		echo "Stopping tangod daemon ... "
+                kill -9 `cat /var/run/tangod.pid`
+                rm -f /var/run/tangod.pid
+		echo "Starting tangod daemon ..."
+                php /usr/local/tangod/tangod.php
+
+	;;
+	*)	usage
+esac
+
+exit 0

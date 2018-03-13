@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+# Remove WICD launch in 5 runlevel
+rm -rf /etc/rc5.d/S04wicd
+rm -f /etc/xdg/autostart/wicd-tray.desktop

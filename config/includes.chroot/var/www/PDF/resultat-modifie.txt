@@ -1,0 +1,2 @@
+Target: 194.158.102.114 (194.158.102.114), transfer speed: 5000 kbps, packet size: 1500 bytes, traffic volume: 75000000 bytes
+Total: pkts sent/rcvd: 50000/49991, volume rcvd: 74986500 bytes, time: 120 sec, speed: 4999 kbps, rtt min/max/average: 10/47/10 ms

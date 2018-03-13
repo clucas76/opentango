@@ -1,0 +1,7 @@
+//
+// Tangod -- Copyright 2014-2015 : 
+// Christophe Lucas <christophe@clucas.fr>
+// Ludovic Leroy <>
+// 
+// Lanceur de programme / configure la machine pour faire les tests tango, ...
+//

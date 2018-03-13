@@ -1,0 +1,10 @@
+#!/bin/bash
+
+dev=`mount | grep " iso" | cut -d " " -f 1`
+#dev=`mount | grep " / " | cut -d " " -f 1`
+
+l=${#dev}  
+l=$((l-1))
+
+echo ${dev:0:l}
+exit 0

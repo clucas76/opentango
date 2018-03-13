@@ -1,0 +1,11 @@
+[Unit]
+Description=tangod.service
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /usr/local/bin/opentango
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
+

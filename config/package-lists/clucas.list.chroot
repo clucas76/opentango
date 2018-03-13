@@ -1,0 +1,15 @@
+### DESKTOP ###
+vlc task-lxde-desktop task-laptop task-french task-ssh-server task-web-server unzip iceweasel filezilla less libjpeg62 libgtkglext1 
+
+### OUTILS RESEAU ###
+iptables iproute net-tools bwm-ng iftop htop iperf iperf3 nmap netcat tcpdump wireshark telnet putty ethtool tshark pure-ftpd atftpd atftp ostinato
+
+### PHP ###
+libapache2-mod-php5 php5-cli php5-sqlite php-fpdf
+
+### KEY / SERIAL ###
+#libusb
+usbutils lshw bc vim
+
+## SYSTEM ##
+kbd

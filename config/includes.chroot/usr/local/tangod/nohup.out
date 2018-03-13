@@ -1,0 +1,14 @@
+PHP Notice:  Use of undefined constant tos - assumed 'tos' in /usr/local/tangod/bin/qos_scheduler.php on line 27
+PHP Notice:  Use of undefined constant debit - assumed 'debit' in /usr/local/tangod/bin/qos_scheduler.php on line 28
+PHP Notice:  Use of undefined constant pkt_size - assumed 'pkt_size' in /usr/local/tangod/bin/qos_scheduler.php on line 29
+PHP Notice:  Use of undefined constant ip_src - assumed 'ip_src' in /usr/local/tangod/bin/qos_scheduler.php on line 30
+PHP Notice:  Use of undefined constant ip_dst - assumed 'ip_dst' in /usr/local/tangod/bin/qos_scheduler.php on line 31
+mkdir -p /tmp/qos/flow-0 && chown www-data.www-data /tmp/qos/flow-0
+php /usr/local/tangod/bin/qos.php flow-0 5000 64 187500000 172.16.103.168 194.158.102.114 0 300
+PHP Notice:  Use of undefined constant tos - assumed 'tos' in /usr/local/tangod/bin/qos_scheduler.php on line 27
+PHP Notice:  Use of undefined constant debit - assumed 'debit' in /usr/local/tangod/bin/qos_scheduler.php on line 28
+PHP Notice:  Use of undefined constant pkt_size - assumed 'pkt_size' in /usr/local/tangod/bin/qos_scheduler.php on line 29
+PHP Notice:  Use of undefined constant ip_src - assumed 'ip_src' in /usr/local/tangod/bin/qos_scheduler.php on line 30
+PHP Notice:  Use of undefined constant ip_dst - assumed 'ip_dst' in /usr/local/tangod/bin/qos_scheduler.php on line 31
+mkdir -p /tmp/qos/flow-1 && chown www-data.www-data /tmp/qos/flow-1
+php /usr/local/tangod/bin/qos.php flow-1 2000 1024 75000000 172.16.103.168 194.158.102.114 0 300

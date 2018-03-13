@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+cp /root/OpenTango/key6/config/i.img /root/OpenTango/key6/binary/live/ 

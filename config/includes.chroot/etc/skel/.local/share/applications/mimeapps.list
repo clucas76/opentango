@@ -1,0 +1,5 @@
+[Added Associations]
+application/pdf=kde4-okular.desktop;
+
+[Default Applications]
+application/pdf=kde4-okular.desktop

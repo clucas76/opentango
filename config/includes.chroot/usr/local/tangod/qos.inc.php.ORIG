@@ -1,0 +1,83 @@
+<?php
+//
+// Tangod -- Copyright 2014-2017 : 
+// Christophe Lucas <christophe@opentango.net>
+// Ludovic Leroy <ludovic@opentango.net>
+// 
+// Lanceur du programme de test de QOS
+//
+
+include_once('process.inc.php');
+
+function qos($action, $duree, $tab_b64)
+{
+	$cmd = "";
+	logging_debug("QOS:qos();");
+	if ($action == "stop") {
+		$cmd = "killall -KILL fping" ;
+		logging_debug($cmd);
+		bgexec($cmd, "/dev/null");
+		$cmd = "killall -KILL bwping " ;
+		bgexec($cmd, "/dev/null");
+
+		// TODO : Tuer les processus php qos.php qui lance les flux
+
+		$today = date("Y-m-d H-i-s");
+		$cmd = "echo \"FIN:" . $today . "\" >> /tmp/qos.results";
+		exec($cmd);
+	} else if($action == "start") { 
+
+
+		$today = date("Y-m-d H:i:s");
+        	// Afin de faire que apache/ajax puisse lire le fichier
+        	$cmd = "rm -rf /tmp/qos* && mkdir -p /tmp/qos/ && chown www-data.www-data /tmp/qos";
+        	exec($cmd);
+        	$cmd = "echo \"DEBUT: " . $today . "\" > /tmp/qos/qos.results && chown www-data.www-data /tmp/qos/qos.results";
+        	exec($cmd);
+		
+		$j = base64_decode($tab_b64);
+		logging_debug("QOS:qos()>>" . $j);
+		$arr = json_decode($j, true);
+		logging_debug("QOS:qos()>>" . var_dump($arr));
+
+		$nb = count($arr);
+		$i = 0;
+
+		logging_debug("QOS:qos()>> count(arr) == " . $nb);
+
+		foreach ($arr as $value){
+			$tab = (array) $value;
+			$tos		= $tab[tos];
+			$debit 		= $tab[debit];
+			$pkt_size 	= $tab[pkt_size];
+			$ip_src 	= $tab[ip_src];
+			$ip_dst 	= $tab[ip_dst];
+
+			$vol = $debit * $duree * 1000 / 8 ;
+			logging_debug("QOS:qos()>>" . $tos . "-" . $debit . "-" . $pkt_size . "-" . $ip_src . "-" . $ip_dst . "\n");
+
+			$cmd = "mkdir -p /tmp/qos/flow-" . $i . " && chown www-data.www-data /tmp/qos/flow-" . $i ;
+			exec($cmd);
+			logging_debug($i . " " . $nb);
+			if ($i == ($nb-1)) {
+				logging_debug("on lance sans détacher le process");
+				$cmd = "php /usr/local/tangod/bin/qos.php flow-" . $i  . " " . $debit . " " . $pkt_size . " " . $vol . " " . $ip_src . " " . $ip_dst . " " . $tos . " " . $duree;
+				$pid = exec($cmd);
+
+				$today = date("Y-m-d H:i:s");
+		        	$cmd = "echo \"FIN: " . $today . "\" >> /tmp/qos/qos.results";
+        			exec($cmd);
+	
+			} else {
+				$cmd = "php /usr/local/tangod/bin/qos.php flow-" . $i  . " " . $debit . " " . $pkt_size . " " . $vol . " " . $ip_src . " " . $ip_dst . " " . $tos . " " . $duree;
+				$pid = bgexec_append($cmd, "/dev/null");
+
+			}
+			$i++;
+		}	
+	} else {
+		logging("QOS : ERREUR de format et d'action");
+	}
+}
+
+?>

@@ -1,0 +1,22 @@
+IP :
+====
+ip:IP:NETMASK:GATEWAY
+
+Négociation :
+=============
+nego:SPEED:DUPLEX:AUTO
+
+SPEED :
+ - 1000baseTx
+ - 100baseTx
+ - 10baseT
+
+DUPLEX :
+ - FD
+ - HD
+
+AUTO : 
+0 : négo forcée
+1 : autoneg
+
+

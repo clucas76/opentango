@@ -1,0 +1,10 @@
+[Image]
+Architecture: i386
+Archive-Areas: main contrib non-free
+Distribution: jessie
+Mirror-Bootstrap: http://debian.mirrors.ovh.net/debian/
+
+[FIXME]
+Configuration-Version: 4.0.3
+Name: live-image
+Type: iso-hybrid

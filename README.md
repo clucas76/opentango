@@ -19,6 +19,7 @@ How ?
 You will find a 'live-build' repository. 
 How to build it : apt-get install live-build ...
 
+<pre>
 i  live-boot                            4.0.2-1                                    all          Live System Boot Components
 ii  live-boot-doc                        4.0.2-1                                    all          Live System Boot Components (documentation)
 ii  live-boot-initramfs-tools            4.0.2-1                                    all          Live System Boot Components (initramfs-tools backend)
@@ -28,7 +29,7 @@ ii  live-config-doc                      4.0.4-1                                
 ii  live-config-sysvinit                 4.0.4-1                                    all          Live System Configuration Components (sysvinit backend)
 ii  live-manual-html                     1:4.0.1-1                                  all          Live Systems Documentation (html)
 ii  live-tools                           4.0.2-1.1                                  all          Live System Extra Components
-
+</pre>
 
 'lb build' will produce an ISO you will be able to push on your usb key. I don't have script it for now. 
 
